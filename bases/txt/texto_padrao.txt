@@ -10,3 +10,5 @@ Obrigada,
 Deise - Entregadora Shopee
 
 postgresql://appmaps_db_user:qq7Vs7a4qTdAD9TjTp0V7cxxL3zbMlkt@dpg-d48jki1r0fns73839dgg-a/appmaps_db
+
+postgresql://appmaps_db_user:qq7Vs7a4qTdAD9TjTp0V7cxxL3zbMlkt@dpg-d48jki1r0fns73839dgg-a.oregon-postgres.render.com/appmaps_db

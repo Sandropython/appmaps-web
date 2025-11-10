@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="052c42a9-5282-4f50-a040-3f1201b1b5c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conversores_patch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/directions_predictive.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gerarpkl.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gerarxlsx.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/google_key_tester.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/google_roads.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main_whatsapp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tela_config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/base_screen.kv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/home_screen.kv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/processar_planilha.kv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/tela_config.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AppMaps.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AppMaps.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/siteapp/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bases/txt/texto_padrao.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bases/txt/texto_padrao.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +22,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -49,6 +40,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "Python.google_key_tester.executor": "Run",
     "Python.google_roads.executor": "Run",
     "Python.main.executor": "Run",
@@ -57,8 +49,8 @@
     "Python.main_rotas1.executor": "Run",
     "Python.tela_config.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/ProjetoApp/Maps/AppMaps28102025"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/ProjetoApp/Maps/appmaps-web"
   }
 }]]></component>
   <component name="RecentsManager">
