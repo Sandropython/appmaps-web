@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7c4f0de0fc64ab42b1b214ed3a31df27 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    
+    <style>
+      .pin-uncheck-btn{
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 10000;
+        background: #fff;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        padding: 6px 10px;
+        font: 600 12px/1 Arial, sans-serif;
+        box-shadow: 0 1px 3px rgba(0,0,0,.35);
+        color: #111;
+        text-decoration: none;
+        user-select: none;
+      }
+      .pin-uncheck-btn:hover{ background:#f7f7f7; }
+      @media print { .pin-uncheck-btn{ display:none; } }
+    </style>
+    
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_7c4f0de0fc64ab42b1b214ed3a31df27" ></div>
+        
+    
+            
+        
+    
+      <a class="pin-uncheck-btn" href="#" id="pin-uncheck">Desmarcar</a>
+    
+</body>
+<script>
+    
+    
+            var map_7c4f0de0fc64ab42b1b214ed3a31df27 = L.map(
+                "map_7c4f0de0fc64ab42b1b214ed3a31df27",
+                {
+                    center: [-22.01156490945524, -47.43909238016803],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 16,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+
+            
+
+        
+    
+            var tile_layer_24a5dcd654a7dea84d2a76d7cdb1bd45 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_24a5dcd654a7dea84d2a76d7cdb1bd45.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var options = {
+              position: "topleft",
+              draw: {},
+              edit: {},
+            }
+                // FeatureGroup is to store editable layers.
+                var drawnItems_draw_control_1a055a5fdb9a9a433af5ba2acade7167 =
+                    new L.featureGroup().addTo(
+                        map_7c4f0de0fc64ab42b1b214ed3a31df27
+                    );
+
+            options.edit.featureGroup = drawnItems_draw_control_1a055a5fdb9a9a433af5ba2acade7167;
+            var draw_control_1a055a5fdb9a9a433af5ba2acade7167 = new L.Control.Draw(
+                options
+            ).addTo( map_7c4f0de0fc64ab42b1b214ed3a31df27 );
+            map_7c4f0de0fc64ab42b1b214ed3a31df27.on(L.Draw.Event.CREATED, function(e) {
+                var layer = e.layer,
+                    type = e.layerType;
+                var coords = JSON.stringify(layer.toGeoJSON());
+                layer.on('click', function() {
+                    alert(coords);
+                    console.log(coords);
+                });
+                drawnItems_draw_control_1a055a5fdb9a9a433af5ba2acade7167.addLayer(layer);
+            });
+            map_7c4f0de0fc64ab42b1b214ed3a31df27.on('draw:created', function(e) {
+                drawnItems_draw_control_1a055a5fdb9a9a433af5ba2acade7167.addLayer(e.layer);
+            });
+
+            
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var feature_group_dfd302eac6f0326bcb3ea1f388f66f12 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_4e91b29c24e7c7a7d30c5138db269d06 = L.marker(
+                [-22.01366490945524, -47.44679238016803],
+                {
+}
+            ).addTo(feature_group_dfd302eac6f0326bcb3ea1f388f66f12);
+        
+    
+            var div_icon_bf2b3492f7dbf47beeb593580a673a74 = L.divIcon({
+  "html": "\n    \u003cdiv style=\"\n        width: 150px; min-height: 90px; font-size: 14px;\n        background-color: white; border: 2px solid grey; border-radius: 6px;\n        text-align: center; opacity: 0.92;\"\u003e\n        \u003cp style=\"margin:6px 0 0 0;\"\u003e\u003cb style=\"color:black;\"\u003eROTA:\u003c/b\u003e\u003c/p\u003e\u003cp style=\"margin:0; color:black; font-weight:bold;\"\u003e3.08 km\u003c/p\u003e\u003cp style=\"margin:0; font-size:11px; color:#555;\"\u003e(Google)\u003c/p\u003e\u003chr style=\"margin:4px 16px;border:0;border-top:1px solid #ddd;\"\u003e\u003cp style=\"margin:0; color:black;\"\u003e\u003cb\u003e2.83 km\u003c/b\u003e \u003cspan style=\"font-size:11px;color:#555;\"\u003e(Google \u2013 otim.)\u003c/span\u003e\u003c/p\u003e\n    \u003c/div\u003e\n    ",
+  "className": "empty",
+});
+        
+    
+                marker_4e91b29c24e7c7a7d30c5138db269d06.setIcon(div_icon_bf2b3492f7dbf47beeb593580a673a74);
+            
+    
+            feature_group_dfd302eac6f0326bcb3ea1f388f66f12.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var feature_group_efab72b4aa7e374296a1f6c7df5c369c = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_2a89564bcd6a3f23bef61940ea3c3347 = L.marker(
+                [-22.0099966, -47.4391781],
+                {
+}
+            ).addTo(feature_group_efab72b4aa7e374296a1f6c7df5c369c);
+        
+    
+            var icon_f378d4952e98f23248766e638a887f71 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_929af5f04a69c68d2fbe703b9c2d2f9b = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_bbb93d6e6b6d11091d6e70c59dcc1726 = $(`<div id="html_bbb93d6e6b6d11091d6e70c59dcc1726" style="width: 100.0%; height: 100.0%;">                 <div>                   <b style="font-size:12px;">Ordem:</b><b style="font-size:14px;"> 1</b><br>                   <b style="font-size:12px;">Pedidos:</b> 2<br>                   <b style="font-size:12px;">Parada:</b> 2<br>                   <b style="font-size:12px;">STX:</b> BR254955614994F<br>                   <b style="font-size:12px;">Nome:</b> Renata-2119992697560<br>                   <b style="font-size:12px;">Destino:</b><b style="font-size:16px;"> R. José Maria Fusca, 2034</b><br>                   <b style="font-size:12px;">CEP:</b> 13633-094<br>                   <b style="font-size:12px;">Bairro:</b> Parque dos Eucaliptos<br>                   <b style="font-size:12px;">Cidade:</b> Pirassununga                   <div style="margin-top:8px;"><div style="display:flex; gap:6px; flex-wrap:wrap;"><a href="https://www.google.com/maps/dir/?api=1&destination=-22.0099966,-47.4391781&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;font-weight:600;">Google Maps</a><a href="https://waze.com/ul?ll=-22.0099966,-47.4391781&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;font-weight:600;">Waze</a><a href="https://www.google.com/maps/dir/?api=1&origin=-22.0099966,-47.4391781&destination=-22.0099966,-47.4391781&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;">Google (depósito)</a><a href="https://waze.com/ul?ll=-22.0099966,-47.4391781&from=-22.0099966,-47.4391781&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;">Waze (depósito)</a></div></div>                 </div>             </div>`)[0];
+                popup_929af5f04a69c68d2fbe703b9c2d2f9b.setContent(html_bbb93d6e6b6d11091d6e70c59dcc1726);
+            
+        
+
+        marker_2a89564bcd6a3f23bef61940ea3c3347.bindPopup(popup_929af5f04a69c68d2fbe703b9c2d2f9b)
+        ;
+
+        
+    
+    
+                marker_2a89564bcd6a3f23bef61940ea3c3347.setIcon(icon_f378d4952e98f23248766e638a887f71);
+            
+    
+            feature_group_efab72b4aa7e374296a1f6c7df5c369c.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var feature_group_b85722e813170474c4b04d1eba5441c5 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_3d4f842733d05afbb111f3471de23c1e = L.marker(
+                [-22.0101972, -47.4382407],
+                {
+}
+            ).addTo(feature_group_b85722e813170474c4b04d1eba5441c5);
+        
+    
+            var icon_06663a62930d1c1b695a9b1e40a4a81c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8a71bc1d911f1fe1fc0e3d5eab481ddc = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_fe40dc6cfa1844f0e5e3230c35579360 = $(`<div id="html_fe40dc6cfa1844f0e5e3230c35579360" style="width: 100.0%; height: 100.0%;">                 <div>                   <b style="font-size:12px;">Ordem:</b><b style="font-size:14px;"> 2</b><br>                   <b style="font-size:12px;">Pedidos:</b> 3<br>                   <b style="font-size:12px;">Parada:</b> 3<br>                   <b style="font-size:12px;">STX:</b> BR253200318391K<br>                   <b style="font-size:12px;">Nome:</b> Bruna-5519991143656<br>                   <b style="font-size:12px;">Destino:</b><b style="font-size:16px;"> R. Sebastião Rosim, 2041</b><br>                   <b style="font-size:12px;">CEP:</b> 13633-092<br>                   <b style="font-size:12px;">Bairro:</b> Parque dos Eucaliptos<br>                   <b style="font-size:12px;">Cidade:</b> Pirassununga                   <div style="margin-top:8px;"><div style="display:flex; gap:6px; flex-wrap:wrap;"><a href="https://www.google.com/maps/dir/?api=1&destination=-22.0101972,-47.4382407&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;font-weight:600;">Google Maps</a><a href="https://waze.com/ul?ll=-22.0101972,-47.4382407&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;font-weight:600;">Waze</a><a href="https://www.google.com/maps/dir/?api=1&origin=-22.0099966,-47.4391781&destination=-22.0101972,-47.4382407&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;">Google (depósito)</a><a href="https://waze.com/ul?ll=-22.0101972,-47.4382407&from=-22.0099966,-47.4391781&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;">Waze (depósito)</a></div></div>                 </div>             </div>`)[0];
+                popup_8a71bc1d911f1fe1fc0e3d5eab481ddc.setContent(html_fe40dc6cfa1844f0e5e3230c35579360);
+            
+        
+
+        marker_3d4f842733d05afbb111f3471de23c1e.bindPopup(popup_8a71bc1d911f1fe1fc0e3d5eab481ddc)
+        ;
+
+        
+    
+    
+                marker_3d4f842733d05afbb111f3471de23c1e.setIcon(icon_06663a62930d1c1b695a9b1e40a4a81c);
+            
+    
+            feature_group_b85722e813170474c4b04d1eba5441c5.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var feature_group_4f42aadee2cf75f435637233918103b2 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_a876b88a02f94fa0bf7f0f5d55c062fa = L.marker(
+                [-22.0111661, -47.439802],
+                {
+}
+            ).addTo(feature_group_4f42aadee2cf75f435637233918103b2);
+        
+    
+            var icon_278eded7a4c3756278b2567ae7ed0e8b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6316650140eba706c493d9933ad58f58 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_ca01f85d4799e35f4ccb3fd0f5979ea6 = $(`<div id="html_ca01f85d4799e35f4ccb3fd0f5979ea6" style="width: 100.0%; height: 100.0%;">                 <div>                   <b style="font-size:12px;">Ordem:</b><b style="font-size:14px;"> 3</b><br>                   <b style="font-size:12px;">Pedidos:</b> 5<br>                   <b style="font-size:12px;">Parada:</b> 4<br>                   <b style="font-size:12px;">STX:</b> BR257586934418W<br>                   <b style="font-size:12px;">Nome:</b> Vanessa-5527999275120<br>                   <b style="font-size:12px;">Destino:</b><b style="font-size:16px;"> R. José Arlindo Dorta, 3071, Casa</b><br>                   <b style="font-size:12px;">CEP:</b> 13633-603<br>                   <b style="font-size:12px;">Bairro:</b> Jardim Cidade Nova<br>                   <b style="font-size:12px;">Cidade:</b> Pirassununga                   <div style="margin-top:8px;"><div style="display:flex; gap:6px; flex-wrap:wrap;"><a href="https://www.google.com/maps/dir/?api=1&destination=-22.0111661,-47.439802&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;font-weight:600;">Google Maps</a><a href="https://waze.com/ul?ll=-22.0111661,-47.439802&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;font-weight:600;">Waze</a><a href="https://www.google.com/maps/dir/?api=1&origin=-22.0099966,-47.4391781&destination=-22.0111661,-47.439802&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;">Google (depósito)</a><a href="https://waze.com/ul?ll=-22.0111661,-47.439802&from=-22.0099966,-47.4391781&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;">Waze (depósito)</a></div></div>                 </div>             </div>`)[0];
+                popup_6316650140eba706c493d9933ad58f58.setContent(html_ca01f85d4799e35f4ccb3fd0f5979ea6);
+            
+        
+
+        marker_a876b88a02f94fa0bf7f0f5d55c062fa.bindPopup(popup_6316650140eba706c493d9933ad58f58)
+        ;
+
+        
+    
+    
+                marker_a876b88a02f94fa0bf7f0f5d55c062fa.setIcon(icon_278eded7a4c3756278b2567ae7ed0e8b);
+            
+    
+            feature_group_4f42aadee2cf75f435637233918103b2.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var feature_group_f79d31513ec608612a8523d63203220d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_19ac26fcd6a5737ff6c86afad6953065 = L.marker(
+                [-22.01182602873393, -47.4394935497107],
+                {
+}
+            ).addTo(feature_group_f79d31513ec608612a8523d63203220d);
+        
+    
+            var icon_6f27487083a44e716b5dd24c58e0eaf8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1f8a76e2f2383c21f1eacd99297f8f73 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_e54f6fc2f7a031a42a3233efba149dac = $(`<div id="html_e54f6fc2f7a031a42a3233efba149dac" style="width: 100.0%; height: 100.0%;">                 <div>                   <b style="font-size:12px;">Ordem:</b><b style="font-size:14px;"> 4</b><br>                   <b style="font-size:12px;">Pedidos:</b> 6<br>                   <b style="font-size:12px;">Parada:</b> 5<br>                   <b style="font-size:12px;">STX:</b> BR257581874295B<br>                   <b style="font-size:12px;">Nome:</b> Nathalia-5519988080221<br>                   <b style="font-size:12px;">Destino:</b><b style="font-size:16px;"> R. Orlando Tuckmantel, 1925</b><br>                   <b style="font-size:12px;">CEP:</b> 13633-602<br>                   <b style="font-size:12px;">Bairro:</b> Jardim Cidade Nova<br>                   <b style="font-size:12px;">Cidade:</b> Pirassununga                   <div style="margin-top:8px;"><div style="display:flex; gap:6px; flex-wrap:wrap;"><a href="https://www.google.com/maps/dir/?api=1&destination=-22.01182602873393,-47.4394935497107&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;font-weight:600;">Google Maps</a><a href="https://waze.com/ul?ll=-22.01182602873393,-47.4394935497107&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;font-weight:600;">Waze</a><a href="https://www.google.com/maps/dir/?api=1&origin=-22.0099966,-47.4391781&destination=-22.01182602873393,-47.4394935497107&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;">Google (depósito)</a><a href="https://waze.com/ul?ll=-22.01182602873393,-47.4394935497107&from=-22.0099966,-47.4391781&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;">Waze (depósito)</a></div></div>                 </div>             </div>`)[0];
+                popup_1f8a76e2f2383c21f1eacd99297f8f73.setContent(html_e54f6fc2f7a031a42a3233efba149dac);
+            
+        
+
+        marker_19ac26fcd6a5737ff6c86afad6953065.bindPopup(popup_1f8a76e2f2383c21f1eacd99297f8f73)
+        ;
+
+        
+    
+    
+                marker_19ac26fcd6a5737ff6c86afad6953065.setIcon(icon_6f27487083a44e716b5dd24c58e0eaf8);
+            
+    
+            feature_group_f79d31513ec608612a8523d63203220d.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var feature_group_9d1b89822c98d8bec6b588d67cdc41d8 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_5af0ec8f9964f22b4407dc85b305dda7 = L.marker(
+                [-22.01156490945524, -47.43909238016803],
+                {
+}
+            ).addTo(feature_group_9d1b89822c98d8bec6b588d67cdc41d8);
+        
+    
+            var icon_79bb4d11006f6c415a70d8228697469d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5a7e0061a29b0c27f0438ef7703f4c52 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_6b9144e12af072a96485adf7bd0e2fe0 = $(`<div id="html_6b9144e12af072a96485adf7bd0e2fe0" style="width: 100.0%; height: 100.0%;">                 <div>                   <b style="font-size:12px;">Ordem:</b><b style="font-size:14px;"> 5</b><br>                   <b style="font-size:12px;">Pedidos:</b> 7<br>                   <b style="font-size:12px;">Parada:</b> 6<br>                   <b style="font-size:12px;">STX:</b> BR259579150399W<br>                   <b style="font-size:12px;">Nome:</b> Denilson-5519993711575<br>                   <b style="font-size:12px;">Destino:</b><b style="font-size:16px;"> R. Orlando Tuckmantel, 1868</b><br>                   <b style="font-size:12px;">CEP:</b> 13633-602<br>                   <b style="font-size:12px;">Bairro:</b> Jardim Cidade Nova<br>                   <b style="font-size:12px;">Cidade:</b> Pirassununga                   <div style="margin-top:8px;"><div style="display:flex; gap:6px; flex-wrap:wrap;"><a href="https://www.google.com/maps/dir/?api=1&destination=-22.01156490945524,-47.43909238016803&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;font-weight:600;">Google Maps</a><a href="https://waze.com/ul?ll=-22.01156490945524,-47.43909238016803&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;font-weight:600;">Waze</a><a href="https://www.google.com/maps/dir/?api=1&origin=-22.0099966,-47.4391781&destination=-22.01156490945524,-47.43909238016803&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;">Google (depósito)</a><a href="https://waze.com/ul?ll=-22.01156490945524,-47.43909238016803&from=-22.0099966,-47.4391781&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;">Waze (depósito)</a></div></div>                 </div>             </div>`)[0];
+                popup_5a7e0061a29b0c27f0438ef7703f4c52.setContent(html_6b9144e12af072a96485adf7bd0e2fe0);
+            
+        
+
+        marker_5af0ec8f9964f22b4407dc85b305dda7.bindPopup(popup_5a7e0061a29b0c27f0438ef7703f4c52)
+        ;
+
+        
+    
+    
+                marker_5af0ec8f9964f22b4407dc85b305dda7.setIcon(icon_79bb4d11006f6c415a70d8228697469d);
+            
+    
+            feature_group_9d1b89822c98d8bec6b588d67cdc41d8.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var feature_group_a068a47de39e80a1302996a097fd3733 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_bdae50eb02601ab104b23bb00cb6b868 = L.marker(
+                [-22.01177568760974, -47.43892231500207],
+                {
+}
+            ).addTo(feature_group_a068a47de39e80a1302996a097fd3733);
+        
+    
+            var icon_b35d412f1374dcf306b22dc8475f2b9a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d371827d01fc87430b8675be43faebf5 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_1ad2d1fb8233261f5c88a61e7037f568 = $(`<div id="html_1ad2d1fb8233261f5c88a61e7037f568" style="width: 100.0%; height: 100.0%;">                 <div>                   <b style="font-size:12px;">Ordem:</b><b style="font-size:14px;"> 6</b><br>                   <b style="font-size:12px;">Pedidos:</b> 8<br>                   <b style="font-size:12px;">Parada:</b> 6<br>                   <b style="font-size:12px;">STX:</b> BR258910630134K<br>                   <b style="font-size:12px;">Nome:</b> Gustavo-5519997198690<br>                   <b style="font-size:12px;">Destino:</b><b style="font-size:16px;"> R. Orlando Tuckmantel, 1865, Asus</b><br>                   <b style="font-size:12px;">CEP:</b> 13633-602<br>                   <b style="font-size:12px;">Bairro:</b> Jardim Cidade Nova<br>                   <b style="font-size:12px;">Cidade:</b> Pirassununga                   <div style="margin-top:8px;"><div style="display:flex; gap:6px; flex-wrap:wrap;"><a href="https://www.google.com/maps/dir/?api=1&destination=-22.01177568760974,-47.43892231500207&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;font-weight:600;">Google Maps</a><a href="https://waze.com/ul?ll=-22.01177568760974,-47.43892231500207&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;font-weight:600;">Waze</a><a href="https://www.google.com/maps/dir/?api=1&origin=-22.0099966,-47.4391781&destination=-22.01177568760974,-47.43892231500207&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;">Google (depósito)</a><a href="https://waze.com/ul?ll=-22.01177568760974,-47.43892231500207&from=-22.0099966,-47.4391781&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;">Waze (depósito)</a></div></div>                 </div>             </div>`)[0];
+                popup_d371827d01fc87430b8675be43faebf5.setContent(html_1ad2d1fb8233261f5c88a61e7037f568);
+            
+        
+
+        marker_bdae50eb02601ab104b23bb00cb6b868.bindPopup(popup_d371827d01fc87430b8675be43faebf5)
+        ;
+
+        
+    
+    
+                marker_bdae50eb02601ab104b23bb00cb6b868.setIcon(icon_b35d412f1374dcf306b22dc8475f2b9a);
+            
+    
+            feature_group_a068a47de39e80a1302996a097fd3733.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var feature_group_17f759fc7d6869e0a47364499637d4bd = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_ba028c8d8bd2fd1fe220991e0e9d8574 = L.marker(
+                [-22.0131988, -47.4381646],
+                {
+}
+            ).addTo(feature_group_17f759fc7d6869e0a47364499637d4bd);
+        
+    
+            var icon_25d4d375a87089b136fdd625a07ff38e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_233b372762dd57d46095f3309651b2e5 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_bc8dd436dfa3e0d98e79035ff99aeed9 = $(`<div id="html_bc8dd436dfa3e0d98e79035ff99aeed9" style="width: 100.0%; height: 100.0%;">                 <div>                   <b style="font-size:12px;">Ordem:</b><b style="font-size:14px;"> 7</b><br>                   <b style="font-size:12px;">Pedidos:</b> 12<br>                   <b style="font-size:12px;">Parada:</b> 9<br>                   <b style="font-size:12px;">STX:</b> BR2540355306529<br>                   <b style="font-size:12px;">Nome:</b> Samara-5519987035804<br>                   <b style="font-size:12px;">Destino:</b><b style="font-size:16px;"> Av. Antônio Joaquim Mendes, 2397, 5</b><br>                   <b style="font-size:12px;">CEP:</b> 13633-037<br>                   <b style="font-size:12px;">Bairro:</b> Jardim Carlos Gomes<br>                   <b style="font-size:12px;">Cidade:</b> Pirassununga                   <div style="margin-top:8px;"><div style="display:flex; gap:6px; flex-wrap:wrap;"><a href="https://www.google.com/maps/dir/?api=1&destination=-22.0131988,-47.4381646&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;font-weight:600;">Google Maps</a><a href="https://waze.com/ul?ll=-22.0131988,-47.4381646&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;font-weight:600;">Waze</a><a href="https://www.google.com/maps/dir/?api=1&origin=-22.0099966,-47.4391781&destination=-22.0131988,-47.4381646&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;">Google (depósito)</a><a href="https://waze.com/ul?ll=-22.0131988,-47.4381646&from=-22.0099966,-47.4391781&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;">Waze (depósito)</a></div></div>                 </div>             </div>`)[0];
+                popup_233b372762dd57d46095f3309651b2e5.setContent(html_bc8dd436dfa3e0d98e79035ff99aeed9);
+            
+        
+
+        marker_ba028c8d8bd2fd1fe220991e0e9d8574.bindPopup(popup_233b372762dd57d46095f3309651b2e5)
+        ;
+
+        
+    
+    
+                marker_ba028c8d8bd2fd1fe220991e0e9d8574.setIcon(icon_25d4d375a87089b136fdd625a07ff38e);
+            
+    
+            feature_group_17f759fc7d6869e0a47364499637d4bd.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var feature_group_86f48a5185ed98baaf4736507ce5491a = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_33862ea092cdc55ba31ce0ad7878c108 = L.marker(
+                [-22.0127469, -47.4394906],
+                {
+}
+            ).addTo(feature_group_86f48a5185ed98baaf4736507ce5491a);
+        
+    
+            var icon_ac423cd1b8eb466c507d1011f78a61c8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d6dd00efb8add45cd957ef983a8673d8 = L.popup({
+  "maxWidth": 360,
+});
+
+        
+            
+                var html_29bdfb966328bac5c31a28f3d298dd52 = $(`<div id="html_29bdfb966328bac5c31a28f3d298dd52" style="width: 100.0%; height: 100.0%;">                 <div>                   <b style="font-size:12px;">Ordem:</b><b style="font-size:14px;"> 8</b><br>                   <b style="font-size:12px;">Pedidos:</b> 116<br>                   <b style="font-size:12px;">Parada:</b> 64<br>                   <b style="font-size:12px;">STX:</b> BR2568650179102<br>                   <b style="font-size:12px;">Nome:</b> Thayane-5519988621069<br>                   <b style="font-size:12px;">Destino:</b><b style="font-size:16px;"> Av. Antônio Joaquim Mendes, 1924, em Cima da Pizzaria Baronesa</b><br>                   <b style="font-size:12px;">CEP:</b> 13631-110<br>                   <b style="font-size:12px;">Bairro:</b> Centro<br>                   <b style="font-size:12px;">Cidade:</b> Pirassununga                   <div style="margin-top:8px;"><div style="display:flex; gap:6px; flex-wrap:wrap;"><a href="https://www.google.com/maps/dir/?api=1&destination=-22.0127469,-47.4394906&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;font-weight:600;">Google Maps</a><a href="https://waze.com/ul?ll=-22.0127469,-47.4394906&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;font-weight:600;">Waze</a><a href="https://www.google.com/maps/dir/?api=1&origin=-22.0099966,-47.4391781&destination=-22.0127469,-47.4394906&travelmode=driving" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#1a73e8;color:#fff;">Google (depósito)</a><a href="https://waze.com/ul?ll=-22.0127469,-47.4394906&from=-22.0099966,-47.4391781&navigate=yes" target="_blank" rel="noopener" style="text-decoration:none;padding:6px 8px;border-radius:6px;background:#0b8043;color:#fff;">Waze (depósito)</a></div></div>                 </div>             </div>`)[0];
+                popup_d6dd00efb8add45cd957ef983a8673d8.setContent(html_29bdfb966328bac5c31a28f3d298dd52);
+            
+        
+
+        marker_33862ea092cdc55ba31ce0ad7878c108.bindPopup(popup_d6dd00efb8add45cd957ef983a8673d8)
+        ;
+
+        
+    
+    
+                marker_33862ea092cdc55ba31ce0ad7878c108.setIcon(icon_ac423cd1b8eb466c507d1011f78a61c8);
+            
+    
+            feature_group_86f48a5185ed98baaf4736507ce5491a.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var feature_group_61a6b8d20d4f7cac62940b3dd93fe353 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_363d7e6f5f5756c8e1b5aa32480fe6e7 = L.polyline(
+                [[-22.0099966, -47.4391781], [-22.0099966, -47.4391781], [-22.0101972, -47.4382407], [-22.0111661, -47.439802], [-22.01182602873393, -47.4394935497107], [-22.01156490945524, -47.43909238016803], [-22.01177568760974, -47.43892231500207], [-22.0131988, -47.4381646], [-22.0127469, -47.4394906]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_61a6b8d20d4f7cac62940b3dd93fe353);
+        
+    
+            var feature_group_3753aad197ab6d80f6a8871dc72381fb = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_785e1221c13dac34d448af0f02fe4fc4 = L.polyline(
+                [[-22.0099966, -47.4391781], [-22.0101972, -47.4382407], [-22.0111661, -47.439802], [-22.01182602873393, -47.4394935497107], [-22.01156490945524, -47.43909238016803], [-22.01177568760974, -47.43892231500207], [-22.0131988, -47.4381646], [-22.0127469, -47.4394906], [-22.0099966, -47.4391781]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": "6,8", "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_3753aad197ab6d80f6a8871dc72381fb);
+        
+    
+            var feature_group_2523ca3f224256d506163a03d24a9933 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_43e987b5233da58158ab9b959a249b3c = L.polyline(
+                [[-22.0099966, -47.4391781], [-22.0099966, -47.4391781], [-22.0101972, -47.4382407], [-22.0111661, -47.439802], [-22.01182602873393, -47.4394935497107], [-22.01156490945524, -47.43909238016803], [-22.01177568760974, -47.43892231500207], [-22.0131988, -47.4381646], [-22.0127469, -47.4394906], [-22.0099966, -47.4391781]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_2523ca3f224256d506163a03d24a9933);
+        
+    
+            var feature_group_0fa10abfed9360e745cf50a3cb363de7 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_716cc025f7a1ec76177b1d2a0d254097 = L.polyline(
+                [[-22.01001, -47.43904], [-22.01046, -47.43909], [-22.0105, -47.43878], [-22.01053, -47.43848], [-22.01018, -47.43844], [-22.01053, -47.43848], [-22.01057, -47.43817], [-22.01061, -47.43786], [-22.0109, -47.4379], [-22.01119, -47.43793], [-22.0111, -47.43884], [-22.01102, -47.43979], [-22.01107, -47.43985], [-22.01116, -47.43988], [-22.01154, -47.43988], [-22.0117, -47.43986], [-22.0118, -47.43979], [-22.01182, -47.4397], [-22.01174, -47.43893], [-22.01164, -47.43798], [-22.01215, -47.43798], [-22.01241, -47.43796], [-22.01242, -47.43801], [-22.01244, -47.43817], [-22.0125, -47.4385], [-22.01266, -47.43912], [-22.01272, -47.43936], [-22.01271, -47.43938], [-22.01272, -47.43944], [-22.01274, -47.43948], [-22.01282, -47.43953], [-22.01291, -47.43949], [-22.01294, -47.43939], [-22.0129, -47.43931], [-22.01286, -47.43928], [-22.01283, -47.43928], [-22.01266, -47.43878], [-22.01261, -47.43858], [-22.01257, -47.43835], [-22.01254, -47.43814], [-22.01253, -47.43803], [-22.01308, -47.43781], [-22.01253, -47.43803], [-22.01252, -47.43798], [-22.01249, -47.43767], [-22.01227, -47.43585], [-22.01198, -47.43324], [-22.01205, -47.43318], [-22.01208, -47.43309], [-22.01205, -47.43298], [-22.01198, -47.43292], [-22.01191, -47.43291], [-22.01184, -47.43293], [-22.01179, -47.43299], [-22.01177, -47.43308], [-22.01179, -47.43317], [-22.01186, -47.43323], [-22.01222, -47.43622], [-22.01241, -47.43796], [-22.01251, -47.43852], [-22.01259, -47.43888], [-22.01273, -47.43934], [-22.01271, -47.43939], [-22.01272, -47.43944], [-22.01274, -47.43949], [-22.01276, -47.43956], [-22.01271, -47.43986], [-22.01266, -47.43993], [-22.01256, -47.44006], [-22.01244, -47.44017], [-22.01231, -47.44024], [-22.01218, -47.44027], [-22.012, -47.44027], [-22.01151, -47.44023], [-22.01086, -47.44017], [-22.01061, -47.44012], [-22.01064, -47.43988], [-22.01063, -47.4398], [-22.01056, -47.43972], [-22.01039, -47.43968], [-22.01046, -47.43909], [-22.01001, -47.43904]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(feature_group_0fa10abfed9360e745cf50a3cb363de7);
+        
+    
+            feature_group_0fa10abfed9360e745cf50a3cb363de7.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var feature_group_7794ad371fdb458dccee7788be2ef778 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_4aed3c420578102ffb154dcfb80b3118 = L.marker(
+                [-22.0099966, -47.4391781],
+                {
+}
+            ).addTo(feature_group_7794ad371fdb458dccee7788be2ef778);
+        
+    
+            var icon_2a7e2519c0214e05477031b1b0b90246 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "flag",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_80e9107abd146e5a09a31c0d4d32c96c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9f9743165ae8b624f38a2cf7085c46c3 = $(`<div id="html_9f9743165ae8b624f38a2cf7085c46c3" style="width: 100.0%; height: 100.0%;">Depósito (ponto zero)</div>`)[0];
+                popup_80e9107abd146e5a09a31c0d4d32c96c.setContent(html_9f9743165ae8b624f38a2cf7085c46c3);
+            
+        
+
+        marker_4aed3c420578102ffb154dcfb80b3118.bindPopup(popup_80e9107abd146e5a09a31c0d4d32c96c)
+        ;
+
+        
+    
+    
+                marker_4aed3c420578102ffb154dcfb80b3118.setIcon(icon_2a7e2519c0214e05477031b1b0b90246);
+            
+    
+            feature_group_7794ad371fdb458dccee7788be2ef778.addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+        
+    
+            var layer_control_ed8723b65d1bbf8df7bf809b29b52dab_layers = {
+                base_layers : {
+                    "Mapa base" : tile_layer_24a5dcd654a7dea84d2a76d7cdb1bd45,
+                },
+                overlays :  {
+                    "Resumo da rota (KM)" : feature_group_dfd302eac6f0326bcb3ea1f388f66f12,
+                    "1P - 2" : feature_group_efab72b4aa7e374296a1f6c7df5c369c,
+                    "2P - 3" : feature_group_b85722e813170474c4b04d1eba5441c5,
+                    "3P - 5" : feature_group_4f42aadee2cf75f435637233918103b2,
+                    "4P - 6" : feature_group_f79d31513ec608612a8523d63203220d,
+                    "5P - 7" : feature_group_9d1b89822c98d8bec6b588d67cdc41d8,
+                    "6P - 8" : feature_group_a068a47de39e80a1302996a097fd3733,
+                    "7P - 12" : feature_group_17f759fc7d6869e0a47364499637d4bd,
+                    "8P - 116" : feature_group_86f48a5185ed98baaf4736507ce5491a,
+                    "Rota (ida)" : feature_group_61a6b8d20d4f7cac62940b3dd93fe353,
+                    "Rota (volta)" : feature_group_3753aad197ab6d80f6a8871dc72381fb,
+                    "Rota (ida/volta)" : feature_group_2523ca3f224256d506163a03d24a9933,
+                    "Rota (Google)" : feature_group_0fa10abfed9360e745cf50a3cb363de7,
+                    "Dep\u00f3sito" : feature_group_7794ad371fdb458dccee7788be2ef778,
+                },
+            };
+            let layer_control_ed8723b65d1bbf8df7bf809b29b52dab = L.control.layers(
+                layer_control_ed8723b65d1bbf8df7bf809b29b52dab_layers.base_layers,
+                layer_control_ed8723b65d1bbf8df7bf809b29b52dab_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_7c4f0de0fc64ab42b1b214ed3a31df27);
+
+        
+    
+      (function(){
+        var a = document.getElementById('pin-uncheck');
+        if(!a) return;
+        a.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation();
+          const boxes=document.querySelectorAll('.leaflet-control-layers-overlays input[type=checkbox]');
+          boxes.forEach(cb => { if (cb.checked) cb.click(); });
+        }, {passive:false});
+      })();
+    
+    
+        (function(){
+          var map = figure_85e88150a81be0a541050fa48c46cac2;
+          var KEY = "appmaps:T2:sequence:dg1-ug1-su0-flg1-sgl1";
+          var KLAY = KEY + ":layers";
+          var KVIEW = KEY + ":view";
+
+          function readJSON(k, def){ try{ return JSON.parse(localStorage.getItem(k)) ?? def; }catch(_){ return def; } }
+          function writeJSON(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(_){ } }
+
+          function getOverlayItems(){
+            const items = [];
+            const root = document.querySelector('.leaflet-control-layers-overlays');
+            if(!root) return items;
+            root.querySelectorAll('label').forEach(function(lbl){
+              const name = (lbl.textContent || '').trim();
+              const cb = lbl.querySelector('input[type=checkbox]');
+              if (cb && name) items.push({ name, cb });
+            });
+            return items;
+          }
+
+          function saveLayers(){
+            const obj = {};
+            getOverlayItems().forEach(it => obj[it.name] = !!it.cb.checked);
+            writeJSON(KLAY, obj);
+          }
+
+          function applySavedLayers(){
+            const saved = readJSON(KLAY, null);
+            if (!saved) return false;
+            const items = getOverlayItems();
+            if (!items.length) return false;
+            items.forEach(function(it){
+              const want = saved.hasOwnProperty(it.name) ? !!saved[it.name] : it.cb.checked;
+              if (!!it.cb.checked !== want){
+                it.cb.click();
+              }
+            });
+            return true;
+          }
+
+          function saveView(){
+            try{
+              var c = map.getCenter();
+              var z = map.getZoom();
+              writeJSON(KVIEW, {center:[c.lat, c.lng], zoom:z});
+            }catch(_){}
+          }
+
+          function applySavedView(){
+            const view = readJSON(KVIEW, null);
+            if (view && Array.isArray(view.center) && typeof view.zoom === 'number'){
+              try{ map.setView(view.center, view.zoom, {animate:false}); }catch(_){}
+            }
+          }
+
+          var applied = false;
+          var tries = 0;
+          var maxTries = 60;
+          var i = setInterval(function(){
+            tries += 1;
+            var ok = document.querySelectorAll('.leaflet-control-layers-overlays label').length > 0;
+            if (ok){
+              applySavedView();
+              var done = applySavedLayers();
+              if (done){
+                applied = true;
+                wireEvents();
+                clearInterval(i);
+              }
+            }
+            if (tries >= maxTries && !applied){
+              wireEvents();
+              clearInterval(i);
+            }
+          }, 200);
+
+          function wireEvents(){
+            if (wireEvents._wired) return;
+            wireEvents._wired = true;
+
+            function bindBoxes(){
+              getOverlayItems().forEach(it => {
+                it.cb.addEventListener('change', saveLayers, {passive:true});
+              });
+            }
+            bindBoxes();
+
+            var obs = new MutationObserver(function(){ bindBoxes(); });
+            var root = document.querySelector('.leaflet-control-layers-overlays');
+            if (root){ obs.observe(root, {childList:true, subtree:true}); }
+
+            map.on('overlayadd', saveLayers);
+            map.on('overlayremove', saveLayers);
+            map.on('moveend', saveView);
+            map.on('zoomend', saveView);
+          }
+
+          window.addEventListener('beforeunload', function(){
+            saveLayers();
+            saveView();
+          });
+        })();
+        
+</script>
+</html>

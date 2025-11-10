@@ -1,0 +1,11 @@
+{
+  "GOOGLE_API_KEY": "",
+  "GOOGLE_LANG": "pt-BR",
+  "GOOGLE_MAX_POINTS": 25,
+  "USE_GOOGLE": true,
+  "DESENHAR_ROTA_GOOGLE": true,
+  "INCLUIR_DEPOSITO_NO_KM": true,
+  "CALCULAR_KM_OTIMIZADO": true,
+  "START_LAYERS_UNCHECKED": false,
+  "USE_PREDICTIVE_TIME": false
+}

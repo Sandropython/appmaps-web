@@ -1,0 +1,270 @@
+#:kivy 2.3.0
+#:import dp kivy.metrics.dp
+
+<WhatsAppBulkScreen@MDScreen>:
+    MDRelativeLayout:
+        md_bg_color: 1, 1, 1, 1
+
+        # APP BAR
+        MDTopAppBar:
+            md_bg_color: 0.13, 0.59, 0.95, 1
+            theme_bg_color: "Custom"
+            type: "small"
+            size_hint_y: None
+            height: dp(56)
+            pos_hint: {"top": 1}
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "arrow-left"
+                    on_release: app.voltar()
+
+            MDTopAppBarTitle:
+                text: "Envio WhatsApp"
+
+            MDTopAppBarTrailingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "information-outline"
+                    on_release: app.whats_info()
+                MDActionTopAppBarButton:
+                    icon: "dots-vertical"
+                    on_release: app.whats_menu()
+
+        # CONTEÚDO
+        ScrollView:
+            size_hint: 1, 1
+            do_scroll_x: False
+
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: dp(14)
+                padding: dp(14), dp(72), dp(14), dp(16)  # top por causa da appbar
+                adaptive_height: True
+
+                # === BLOCO 1: BASE ===
+                MDCard:
+                    style: "outlined"
+                    radius: dp(16)
+                    padding: dp(16)
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        adaptive_height: True
+                        spacing: dp(12)
+
+                        MDLabel:
+                            id: lbl_base_contatos
+                            text: ("Nenhum arquivo de contatos selecionado" if not app.input_whats else app.input_whats.replace("/", "\\").split("\\")[-1])
+                            halign: "center"
+                            theme_text_color: "Primary"
+                            shorten: True
+                            shorten_from: "left"
+                            text_size: self.width, None
+                            size_hint_y: None
+                            height: self.texture_size[1]
+
+                        AnchorLayout:
+                            size_hint_y: None
+                            height: dp(46)
+                            anchor_x: "center"
+                            MDButton:
+                                id: btn_import_contatos
+                                style: "filled"
+                                theme_bg_color: "Custom"
+                                md_bg_color: 0.0, 0.4, 0.8, 1
+                                on_release: app.whats_importar_base()
+                                MDButtonText:
+                                    text: ("Importar contatos (.xlsx)" if not app.input_whats else "Trocar contatos")
+
+
+
+                        MDLabel:
+                            id: lbl_contagem
+                            text: "Contatos: 0"
+                            halign: "center"
+                            theme_text_color: "Secondary"
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                            text_size: self.width, None
+
+                        MDBoxLayout:
+                            size_hint_y: None
+                            height: dp(40)
+                            spacing: dp(8)
+                            padding: 0, 0, 0, dp(2)
+
+                            MDLabel:
+                                text: "Aba:"
+                                theme_text_color: "Secondary"
+                                halign: "left"
+                                size_hint_x: None
+                                width: dp(42)
+                                text_size: self.width, None
+                                valign: "middle"
+
+                            MDButton:
+                                id: btn_sheet
+                                style: "outlined"
+                                on_release: app.open_sheet_menu(self)
+                                MDButtonText:
+                                    id: btn_sheet_text
+                                    text: app.selected_sheet if app.selected_sheet else "Selecionar"
+
+                MDDivider:
+                    height: dp(1)
+
+                # === BLOCO 2: MENSAGEM ===
+                MDCard:
+                    style: "outlined"
+                    radius: dp(16)
+                    padding: dp(16)
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        adaptive_height: True
+                        spacing: dp(12)
+
+                        MDBoxLayout:
+                            adaptive_height: True
+                            spacing: dp(6)
+                            MDLabel:
+                                text: "Mensagem padrão"
+                                theme_text_color: "Primary"
+                                halign: "left"
+                                text_size: self.width, None
+                                size_hint_y: None
+                                height: self.texture_size[1]
+                            MDIconButton:
+                                icon: "information-outline"
+                                on_release: app.whats_info()
+
+                        MDTextField:
+                            id: tf_msg
+                            hint_text: "Digite a mensagem padrão..."
+                            mode: "outlined"
+                            multiline: True
+                            max_text_length: 4000
+                            size_hint_y: None
+                            height: dp(140)
+
+                        AnchorLayout:
+                            size_hint_y: None
+                            height: dp(46)
+                            anchor_x: "left"
+                            MDButton:
+                                id: btn_preview_msg
+                                style: "tonal"
+                                on_release: app.whats_preview()
+                                MDButtonText:
+                                    text: "Pré-visualizar"
+
+                MDDivider:
+                    height: dp(1)
+
+                # === BLOCO 3: ENVIO ===
+                MDCard:
+                    style: "outlined"
+                    radius: dp(16)
+                    padding: dp(16)
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        adaptive_height: True
+                        spacing: dp(12)
+
+                        MDBoxLayout:
+                            size_hint_y: None
+                            height: dp(48)
+                            spacing: dp(10)
+
+                            MDLabel:
+                                text: "(ms)"
+                                theme_text_color: "Secondary"
+                                halign: "left"
+                                text_size: self.width, None
+                                size_hint_y: None
+                                height: self.texture_size[1]
+
+                            Widget:
+
+                            MDTextField:
+                                id: tf_delay_ms
+                                text: "800"
+                                mode: "outlined"
+                                size_hint_x: None
+                                width: dp(96)
+                                input_filter: "int"
+
+                            MDButton:
+                                id: btn_limpar
+                                style: "outlined"
+                                on_release: app.whats_limpar()
+                                MDButtonText:
+                                    text: "Limpar"
+
+                        AnchorLayout:
+                            size_hint_y: None
+                            height: dp(50)
+                            anchor_x: "center"
+                            MDButton:
+                                id: btn_enviar
+                                style: "filled"
+                                theme_bg_color: "Custom"
+                                md_bg_color: 0.0, 0.4, 0.8, 1
+                                disabled: not app.input_whats
+                                on_release: app.whats_enviar_selenium()
+                                MDButtonText:
+                                    text: "Envio WhatsApp"
+
+                        MDLabel:
+                            id: lbl_status_whats
+                            text: "Status: pronto"
+                            theme_text_color: "Secondary"
+                            halign: "left"
+                            text_size: self.width, None
+                            size_hint_y: None
+                            height: self.texture_size[1]
+
+                        MDBoxLayout:
+                            orientation: "vertical"
+                            adaptive_height: True
+                            spacing: dp(6)
+
+                            MDLabel:
+                                text: "Prévia de contatos:"
+                                theme_text_color: "Primary"
+                                halign: "left"
+                                text_size: self.width, None
+                                size_hint_y: None
+                                height: self.texture_size[1]
+
+                            RecycleView:
+                                id: rv_preview
+                                viewclass: "MDLabel"
+                                size_hint_y: None
+                                height: dp(180)
+                                bar_width: dp(4)
+                                scroll_type: ['bars', 'content']
+                                data: []
+
+                                RecycleBoxLayout:
+                                    padding: dp(6), 0, dp(6), dp(6)
+                                    default_size: None, dp(26)
+                                    default_size_hint: 1, None
+                                    size_hint_y: None
+                                    height: self.minimum_height
+                                    orientation: 'vertical'
+
+# RAIZ
+WhatsAppBulkScreen:
+
+
+
+
+

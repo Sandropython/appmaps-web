@@ -4,14 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40c6508a-3deb-4cbb-be7a-abfd49a68bb1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/AppMaps.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="052c42a9-5282-4f50-a040-3f1201b1b5c1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/conversores_patch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/directions_predictive.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gerarpkl.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gerarxlsx.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/google_key_tester.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/google_roads.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main_whatsapp.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tela_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/base_screen.kv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/home_screen.kv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/processar_planilha.kv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/tela_config.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AppMaps.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AppMaps.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,22 +38,34 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
-  <component name="ProjectId" id="30f4FwhSlCH1DBklXGo4ZXyLMjB" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="34g7DlaVLevy8prdqd7nv7YDEOj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.google_key_tester.executor": "Run",
+    "Python.google_roads.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.main_patched.executor": "Run",
+    "Python.main_rotas.executor": "Run",
+    "Python.main_rotas1.executor": "Run",
+    "Python.tela_config.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings"
+    "last_opened_file_path": "C:/ProjetoApp/Maps/AppMaps28102025"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\ProjetoApp\Maps\AppMaps\AppMaps\ui" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -54,11 +76,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="40c6508a-3deb-4cbb-be7a-abfd49a68bb1" name="Changes" comment="" />
-      <created>1754005192962</created>
+      <changelist id="052c42a9-5282-4f50-a040-3f1201b1b5c1" name="Changes" comment="" />
+      <created>1761623244973</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1754005192962</updated>
+      <updated>1761623244973</updated>
     </task>
     <servers />
   </component>

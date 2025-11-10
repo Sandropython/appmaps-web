@@ -1,0 +1,114 @@
+# ui/base_screen.kv
+
+<BaseScreen>:
+#    name: "base"
+#    md_bg_color: app.theme_cls.backgroundColor
+    MDRelativeLayout:
+        md_bg_color: 1, 1, 1, 1  # Fundo branco
+
+        MDTopAppBar:
+            type: "small"
+            md_bg_color: 0.13, 0.59, 0.95, 1
+            theme_bg_color: "Custom"
+            size_hint_y: None
+            height: "56dp"
+            pos_hint: {"top": 1}
+
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "arrow-left"
+                    on_release: app.voltar_home()
+#
+            MDTopAppBarTitle:
+                text: "Atualizar Base"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+
+            MDTopAppBarTrailingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "dots-vertical"
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "20dp"
+            padding: "20dp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.8}
+
+            MDLabel:
+                text: "Gerencie e trate sua base de dados"
+                halign: "center"
+                font_size: "20sp"   # Material 2: evite font_style
+                bold: True
+                adaptive_height: True
+
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: "12dp"
+                size_hint_y: None
+                height: self.minimum_height
+
+                # --- Botões existentes ---
+                MDButton:
+                    style: "filled"
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.0, 0.4, 0.8, 1
+                    size_hint_x: 0.6
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.ver_registros()
+#                    on_release: app.numero_registros() if hasattr(app, "numero_registros") else None
+                    MDButtonText:
+                        text: "Número de Registros"
+
+
+                MDButton:
+                    style: "filled"
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.0, 0.4, 0.8, 1
+                    size_hint_x: 0.6
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.ver_registros_cel()
+#                    on_release: app.numero_registros() if hasattr(app, "numero_registros") else None
+                    MDButtonText:
+                        text: "Número de Registros Cel"
+
+                MDButton:
+                    style: "filled"
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.0, 0.4, 0.8, 1
+                    size_hint_x: 0.6
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.remover_duplicados() if hasattr(app, "remover_duplicados") else None
+                    MDButtonText:
+                        text: "Remover Duplicados"
+
+                MDButton:
+                    style: "filled"
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.0, 0.4, 0.8, 1
+                    size_hint_x: 0.6
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.buscar_endereco() if hasattr(app, "buscar_endereco") else None
+                    MDButtonText:
+                        text: "Buscar Endereço"
+
+                # --- NOVOS BOTÕES ---
+                MDButton:
+                    style: "filled"
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.0, 0.4, 0.8, 1
+                    size_hint_x: 0.6
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.abrir_xlsx_para_pkl()
+                    MDButtonText:
+                        text: "XLSX → PKL"
+
+                MDButton:
+                    style: "filled"
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.0, 0.4, 0.8, 1
+                    size_hint_x: 0.6
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.abrir_pkl_para_xlsx()
+                    MDButtonText:
+                        text: "PKL → XLSX"

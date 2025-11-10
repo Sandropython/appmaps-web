@@ -1,0 +1,12 @@
+
+Sou Deise, entregadora da Shopee.
+Sua encomenda está a caminho e deve chegar entre 14:00 e 20:30, podendo ultrapassar esse horário.
+Por favor, assegure que tenha alguém no endereço para receber a entrega. Caso haja uma palavra-chave (se aplicável), tenha-a em mãos.
+Se, por algum motivo, não for possível realizar a entrega hoje, por favor, responda a esta mensagem com SIM para agendarmos a entrega para amanhã.
+Esta é uma mensagem automática. Responda apenas se necessário.
+Agradeço pela compreensão!
+
+Obrigada,
+Deise - Entregadora Shopee
+
+postgresql://appmaps_db_user:qq7Vs7a4qTdAD9TjTp0V7cxxL3zbMlkt@dpg-d48jki1r0fns73839dgg-a/appmaps_db

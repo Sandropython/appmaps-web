@@ -1,0 +1,22 @@
+arquivo,tipo,status,motivo
+ui\atualiza_telefones.kv,kv,ORFÃO?,não referenciado
+ui\base_screen1.kv,kv,ORFÃO?,não referenciado
+ui\main_rotas.kv,kv,ORFÃO?,não referenciado
+ui\main_whatsapp.kv,kv,ORFÃO?,não referenciado
+ui\base_screen.kv,kv,USADO,referenciado por Builder/implícito/include
+ui\home_screen.kv,kv,USADO,referenciado por Builder/implícito/include
+ui\processar_planilha.kv,kv,USADO,referenciado por Builder/implícito/include
+atualiza_telefones.py,py,ORFÃO?,não alcançado a partir do main.py
+conversores_patch1.py,py,ORFÃO?,não alcançado a partir do main.py
+gerarpkl.py,py,ORFÃO?,não alcançado a partir do main.py
+gerarxlsx.py,py,ORFÃO?,não alcançado a partir do main.py
+main - modelo.py,py,ORFÃO?,não alcançado a partir do main.py
+main_patch.py,py,ORFÃO?,não alcançado a partir do main.py
+main_relatorios.py,py,ORFÃO?,não alcançado a partir do main.py
+main_rotas.py,py,ORFÃO?,não alcançado a partir do main.py
+main_rotas1.py,py,ORFÃO?,não alcançado a partir do main.py
+main_whatsapp.py,py,ORFÃO?,não alcançado a partir do main.py
+mapear_usados_orfaos.py,py,ORFÃO?,não alcançado a partir do main.py
+telefones_service.py,py,ORFÃO?,não alcançado a partir do main.py
+conversores_patch.py,py,USADO,alcance via imports a partir do main.py
+main.py,py,USADO,alcance via imports a partir do main.py

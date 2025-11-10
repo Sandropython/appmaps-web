@@ -1,0 +1,188 @@
+<ProcessarPlanilhaScreen>:
+    MDRelativeLayout:
+        md_bg_color: 1, 1, 1, 1
+
+        MDTopAppBar:
+            type: "small"
+            md_bg_color: 0.13, 0.59, 0.95, 1
+            theme_bg_color: "Custom"
+            size_hint_y: None
+            height: "56dp"
+            pos_hint: {"top": 1}
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "arrow-left"
+                    on_release: app.voltar_home()
+
+            MDTopAppBarTitle:
+                text: "Processamento"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+
+            MDTopAppBarTrailingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "dots-vertical"
+
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "15dp"
+            padding: "20dp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.45}
+            size_hint_x: 0.9
+            size_hint_y: None
+            height: self.minimum_height
+
+            MDLabel:
+                id: file_label
+                text: "Nenhum arquivo selecionado"
+                halign: "center"
+                theme_text_color: "Primary"
+                size_hint_y: None
+                height: "30dp"
+
+            MDButton:
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                size_hint_x: 0.6
+                pos_hint: {"center_x": 0.5}
+                on_release: app.selecionar_planilha()
+
+                MDButtonText:
+                    text: "Selecionar Planilha"
+
+            MDButton:
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                size_hint_x: 0.6
+                pos_hint: {"center_x": 0.5}
+                on_release: app.processar_planilha()
+
+                MDButtonText:
+                    text: "Processar Planilha"
+
+            MDDivider:
+                height: "2dp"
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: "40dp"
+                spacing: "5dp"
+                pos_hint: {"center_x": 0.5}
+
+                MDLabel:
+                    text: "Escolha o tipo de busca"
+                    halign: "center"
+                    theme_text_color: "Secondary"
+
+                MDIconButton:
+                    icon: "information-outline"
+                    style: "standard"
+                    theme_icon_color: "Custom"
+                    icon_color: 0.0, 0.4, 0.8, 1
+                    on_release: app.mostrar_info_busca()
+
+            MDBoxLayout:
+                orientation: "horizontal"
+                spacing: "10dp"
+                size_hint_y: None
+                height: "50dp"
+                pos_hint: {"center_x": 0.5}
+
+                MDButton:
+                    id: btn_busca_rapida
+                    style: "filled"
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.0, 0.6, 0.9, 1
+                    size_hint_x: 0.45
+                    disabled: True
+                    on_release: app.buscar_latlong_rapida()
+
+                    MDButtonText:
+                        text: "Busca Rápida"
+
+                MDButton:
+                    id: btn_busca_confiavel
+                    style: "filled"
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.0, 0.4, 0.8, 1
+                    size_hint_x: 0.45
+                    disabled: True
+                    on_release: app.buscar_latlong_confiavel()
+
+                    MDButtonText:
+                        text: "Busca Confiável"
+
+
+
+            MDLinearProgressIndicator:
+                id: progress_bar
+                value: 0
+                size_hint_y: None
+                height: "8dp"
+                color: 0.0, 0.4, 0.8, 1
+
+            MDLabel:
+                id: status_label
+                text: ""
+                halign: "center"
+                theme_text_color: "Secondary"
+                size_hint_y: None
+                height: "30dp"
+
+
+#            MDDivider:
+
+
+            MDLabel:
+                text: "Fluxo: busca, depois gere as rotas."
+                halign: "center"
+                theme_text_color: "Secondary"
+
+
+
+            MDButton:
+                id: btn_gerar_rotas
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                size_hint_x: 0.6
+                pos_hint: {"center_x": 0.5}
+#                disabled: False
+                on_release: app.abrir_main_rotas()
+
+                MDButtonText:
+                    text: "Criar Rota"
+
+
+            MDButton:
+                id: btn_envio_whatsapp
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                size_hint_x: 0.6
+                pos_hint: {"center_x": 0.5}
+            #                disabled: False
+                on_release: app.abrir_main_whatsapp()
+
+                MDButtonText:
+                    text: "Envio"
+
+
+
+            MDButton:
+                id: btn_telefones
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                size_hint_x: 0.6
+                pos_hint: {"center_x": 0.5}
+            #                disabled: False
+                on_release: app.abrir_telefones()
+
+                MDButtonText:
+                    text: "Telefones"

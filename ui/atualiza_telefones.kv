@@ -1,0 +1,126 @@
+
+<AtualizaTelefonesScreen>:
+    name: "AtualizaTelefonesScreen"
+    md_bg_color: app.theme_cls.backgroundColor
+
+    MDTopAppBar:
+        type: "small"
+        md_bg_color: 0.13, 0.59, 0.95, 1
+        theme_bg_color: "Custom"
+        size_hint_y: None
+        height: "56dp"
+        pos_hint: {"top": 1}
+
+        MDTopAppBarLeadingButtonContainer:
+            MDActionTopAppBarButton:
+                icon: "arrow-left"
+                on_release: app.voltar_tela_anterior()
+        MDTopAppBarTitle:
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            text: "Atualizar Telefones"
+        MDTopAppBarTrailingButtonContainer:
+            MDActionTopAppBarButton:
+                icon: "information-outline"
+                on_release: app.alerta_info_atualiza_telefones()
+
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "16dp"
+        spacing: "12dp"
+        y: 0
+        size_hint_y: None
+        height: self.minimum_height
+        pos_hint: {"top": 0.92}
+
+        MDLabel:
+            text: "Selecione os arquivos e execute a atualização"
+            adaptive_height: True
+            theme_text_color: "Secondary"
+
+        MDLabel:
+            text: "Base PKL (telefones)"
+            adaptive_height: True
+        MDBoxLayout:
+            adaptive_height: True
+            spacing: "8dp"
+            MDTextField:
+                id: pkl_path
+                hint_text: "Caminho da base PKL (*.pkl)"
+                helper_text: "Será atualizada com variações __N quando necessário"
+                helper_text_mode: "on_focus"
+                text: root.pkl_path or ""
+                multiline: False
+            MDButton:
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                on_release: app._abrir_filemanager("pkl", pkl_path)
+                MDButtonIcon:
+                    icon: "file-find"
+                MDButtonText:
+                    text: "Selecionar"
+
+        MDLabel:
+            text: "Planilha de entrada (XLSX)"
+            adaptive_height: True
+        MDBoxLayout:
+            adaptive_height: True
+            spacing: "8dp"
+            MDTextField:
+                id: excel_in
+                hint_text: "Planilha de entrada (*.xlsx)"
+                text: root.excel_in or ""
+                multiline: False
+            MDButton:
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                on_release: app._abrir_filemanager("xlsx", excel_in)
+                MDButtonIcon:
+                    icon: "file-excel"
+                MDButtonText:
+                    text: "Selecionar"
+
+        MDDivider:
+
+        MDBoxLayout:
+            adaptive_height: True
+            spacing: "12dp"
+            MDButton:
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                on_release: app.preview_atualiza_telefones()
+                MDButtonIcon:
+                    icon: "eye"
+                MDButtonText:
+                    text: "Pré-visualiza"
+            MDButton:
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                on_release: app.executar_atualiza_telefones()
+                MDButtonIcon:
+                    icon: "content-save"
+                MDButtonText:
+                    text: "Atualiza & Salva"
+
+        MDCard:
+            orientation: "vertical"
+            padding: "12dp"
+            radius: 16
+            md_bg_color: app.theme_cls.surfaceContainerLowColor
+            adaptive_height: True
+
+            MDLabel:
+                text: "Resumo"
+                bold: True
+                adaptive_height: True
+            MDLabel:
+                id: resumo_lbl
+                text: "—"
+                adaptive_height: True
+                theme_text_color: "Secondary"
+

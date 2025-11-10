@@ -1,0 +1,207 @@
+#:kivy 2.3.0
+#:import dp kivy.metrics.dp
+
+<RotasScreen@MDScreen>:
+    MDRelativeLayout:
+        md_bg_color: 1, 1, 1, 1
+
+        # ==== APP BAR (mantido com os MESMOS componentes) ====
+        MDTopAppBar:
+            md_bg_color: 0.13, 0.59, 0.95, 1
+            theme_bg_color: "Custom"
+            type: "small"
+            size_hint_y: None
+            height: "56dp"
+            pos_hint: {"top": 1}
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "arrow-left"
+                    on_release: app.voltar_home()
+
+            MDTopAppBarTitle:
+                text: "Roterização"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+
+            MDTopAppBarTrailingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "information-outline"
+                    on_release: app.mostrar_info_criterio()
+                MDActionTopAppBarButton:
+                    icon: "dots-vertical"
+
+        # ===== CONTEÚDO (3 BLOCOS) =====
+        MDBoxLayout:
+            id: _content
+            orientation: "vertical"
+            pos_hint: {"center_x": 0.5, "center_y": 0.58}
+            spacing: dp(12)
+            padding: dp(14), dp(72), dp(14), dp(14)   # top compensando a AppBar
+            size_hint: 1, 1
+
+            # ---- BLOCO 1: IMPORTAÇÃO DA BASE ----
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: dp(10)
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 0, dp(6)
+
+                MDLabel:
+                    id: lbl_arquivo_top
+                    text: ("Nenhum arquivo selecionado" if not app.input_path else app.input_path.replace("/", "\\").split("\\")[-1])
+                    halign: "center"
+                    theme_text_color: "Primary"
+                    shorten: True
+                    shorten_from: "left"
+                    size_hint_y: None
+                    height: self.texture_size[1] + dp(6)
+
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: dp(44)
+                    spacing: 0
+                    Widget:
+                    MDButton:
+                        id: btn_import_base
+                        style: "filled"
+                        theme_bg_color: "Custom"
+                        md_bg_color: 0.0, 0.4, 0.8, 1
+                        on_release: app.abrir_file_manager()
+                        MDButtonText:
+                            text: "Importar base"
+                    Widget:
+
+
+            MDDivider:
+                height: dp(1)
+
+            # ---- BLOCO 2: CRITÉRIO + GERAR MAPA ----
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: dp(8)
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 0, dp(4)
+
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: dp(36)
+                    spacing: dp(6)
+                    MDLabel:
+                        text: "Escolha o critério"
+                        halign: "center"
+                        theme_text_color: "Secondary"
+                    MDIconButton:
+                        icon: "information-outline"
+                        style: "standard"
+                        theme_icon_color: "Custom"
+                        icon_color: 0.0, 0.4, 0.8, 1
+                        on_release: app.mostrar_info_criterio()
+
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: dp(44)
+                    spacing: dp(10)
+                    padding: 0, 0
+
+                    # Botão de critério (mantido)
+                    MDButton:
+                        id: btn_criterio
+                        style: "outlined"
+                        theme_bg_color: "Custom"
+                        md_bg_color: 1, 1, 1, 1
+                        line_color: 0.0, 0.4, 0.8, 1
+                        size_hint_x: 0.1
+                        pos_hint: {"center_x": 0.5}
+                        on_release: app.abrir_menu_criterio(self)
+                        MDButtonText:
+                            id: btn_criterio_text
+                            text: "Critério: sequence"
+
+                    # Botão Gerar mapa (mantido)
+                    MDButton:
+                        id: btn_gerar
+                        style: "filled"
+                        theme_bg_color: "Custom"
+                        md_bg_color: 0.0, 0.4, 0.8, 1
+                        size_hint_x: None
+                        width: dp(140)
+                        pos_hint: {"center_x": 0.5}
+                        disabled: app.input_path == ""
+                        on_release: app.gerar_mapa_html()
+                        MDButtonText:
+                            text: "Gerar mapa"
+
+                MDLabel:
+                    id: lbl_status
+                    text: "Status: aguardando arquivo…" if app.input_path == "" else "Status: pronto"
+                    theme_text_color: "Secondary"
+                    halign: "center"
+                    size_hint_y: None
+                    height: self.texture_size[1] + dp(6)
+
+            MDDivider:
+                height: dp(1)
+
+            # ---- BLOCO 3: RELATÓRIOS + STATUS ----
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: dp(10)
+                padding: dp(6), 0
+                size_hint_y: None
+                height: self.minimum_height
+
+                # Linha 1: PDFs
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: dp(44)
+                    spacing: dp(10)
+                    MDButton:
+                        style: "elevated"
+                        disabled: app.input_path == ""
+                        on_release: app.gerar_pdf_rota()
+                        MDButtonText:
+                            text: "Gerar PDF da Rota"
+                    MDButton:
+                        style: "elevated"
+                        disabled: app.input_path == ""
+                        on_release: app.gerar_pdf_qrcode(True)
+                        MDButtonText:
+                            text: "Gerar QR Codes"
+
+                # Linha 2: WhatsApp
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: dp(44)
+                    MDButton:
+                        style: "elevated"
+                        disabled: app.input_path == ""
+                        on_release: app.gerar_planilha_whatsapp()
+                        MDButtonText:
+                            text: "Gerar Envio WhatsApp"
+
+                    MDButton:
+                        style: "elevated"
+                        disabled: app.input_path == ""
+                        on_release: app.gerar_pdf_qrcode_static()
+                        MDButtonText:
+                            text: "PDF Map Static"
+
+
+                # Arquivo selecionado (curto)
+                MDLabel:
+                    id: file_label
+                    text: ("Arquivo: (nenhum)" if not app.input_path else app.input_path.replace("/", "\\").split("\\")[-1])
+                    halign: "center"
+                    shorten: True
+                    shorten_from: "left"
+                    theme_text_color: "Secondary"
+                    size_hint_y: None
+                    height: self.texture_size[1] + dp(6)
+
+
+# instancia a tela (mantido)
+RotasScreen:

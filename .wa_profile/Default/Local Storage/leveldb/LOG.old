@@ -1,0 +1,6 @@
+2025/10/15-09:31:23.581 21b8 Reusing MANIFEST C:\ProjetoApp\Maps\AppMaps\AppMaps\.wa_profile\Default\Local Storage\leveldb/MANIFEST-000001
+2025/10/15-09:31:23.596 21b8 Recovering log #110
+2025/10/15-09:31:23.607 21b8 Reusing old log C:\ProjetoApp\Maps\AppMaps\AppMaps\.wa_profile\Default\Local Storage\leveldb/000110.log 
+2025/10/15-09:33:24.544 1c74 Level-0 table #114: started
+2025/10/15-09:33:24.551 1c74 Level-0 table #114: 27655 bytes OK
+2025/10/15-09:33:24.553 1c74 Delete type=0 #110

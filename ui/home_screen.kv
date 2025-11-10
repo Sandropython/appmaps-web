@@ -1,0 +1,95 @@
+<HomeScreen>:
+    MDRelativeLayout:
+        md_bg_color: 1, 1, 1, 1  # Fundo branco
+
+        MDTopAppBar:
+            type: "small"
+            md_bg_color: 0.13, 0.59, 0.95, 1
+            theme_bg_color: "Custom"
+            size_hint_y: None
+            height: "56dp"
+            pos_hint: {"top": 1}
+
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "menu"
+
+            MDTopAppBarTitle:
+                text: "Tela Inicial"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+
+            MDTopAppBarTrailingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "dots-vertical"
+
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "20dp"
+            padding: "20dp"
+            size_hint_y: None
+            height: self.minimum_height
+            pos_hint: {"center_y": 0.45}
+
+
+            MDLabel:
+                text: "Bem-vindo ao App Maps"
+                halign: "center"
+                theme_text_color: "Primary"
+                font_style: "Title"
+                size_hint_y: None
+                height: "40dp"
+
+            Image:
+                source: "ui/Imagem_LogoMFinal.png"
+                size_hint: (None, None)
+                size: (200, 200)
+                pos_hint: {"center_x": 0.5}
+
+#            MDLabel:
+#                text: "APP MAPS"
+#                halign: "center"
+#                theme_text_color: "Custom"
+#                text_color: 0.0, 0.2, 0.8, 1
+#                font_style: "Title"
+#                size_hint_y: None
+#                height: "40dp"
+
+            MDButton:
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                size_hint_x: 0.6
+                pos_hint: {"center_x": 0.5}
+                on_release: app.abrir_processar_planilha()
+
+                MDButtonText:
+                    text: "Processar Planilha"
+
+            MDButton:
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                size_hint_x: 0.6
+                pos_hint: {"center_x": 0.5}
+                on_release: app.abrir_tratamento_base()
+
+                MDButtonText:
+                    text: "Tratamento da Base"
+
+            MDButton:
+                style: "filled"
+                theme_bg_color: "Custom"
+                md_bg_color: 0.0, 0.4, 0.8, 1
+                size_hint_x: 0.6
+                pos_hint: {"center_x": 0.5}
+                on_release: app.tela_config()
+
+                MDButtonText:
+                    text: "Configurações"
+
+
+
+

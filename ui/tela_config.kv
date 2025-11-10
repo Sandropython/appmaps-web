@@ -1,0 +1,181 @@
+# ui/tela_config.kv
+<TelaConfig>:
+    MDRelativeLayout:
+        md_bg_color: 1, 1, 1, 1
+
+        MDTopAppBar:
+            type: "small"
+            md_bg_color: 0.13, 0.59, 0.95, 1
+            theme_bg_color: "Custom"
+            size_hint_y: None
+            height: "56dp"
+            pos_hint: {"top": 1}
+
+            MDTopAppBarLeadingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "arrow-left"
+                    # Usa o voltar do app principal (mantido do seu código)
+                    on_release: app.voltar_home()
+
+            MDTopAppBarTitle:
+                text: "Configurações"
+                halign: "center"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+
+            MDTopAppBarTrailingButtonContainer:
+                MDActionTopAppBarButton:
+                    icon: "content-save"
+                    on_release: root.salvar_config()
+
+        ScrollView:
+            size_hint: 1, None
+            height: root.height - dp(56)
+            do_scroll_x: False
+
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: "16dp"
+                padding: "20dp"
+                size_hint_y: None
+                height: self.minimum_height
+
+                Image:
+                    source: "ui/Imagem_LogoMFinal.png"
+                    size_hint: (None, None)
+                    size: (200, 200)
+                    pos_hint: {"center_x": 0.5}
+
+                MDLabel:
+                    text: "Google Maps"
+                    font_style: "Title"
+                    size_hint_y: None
+                    height: self.texture_size[1] + dp(8)
+
+                MDTextField:
+                    id: tf_api_key
+                    mode: "outlined"
+                    hint_text: "Cole aqui sua GOOGLE_API_KEY"
+                    helper_text_mode: "on_focus"
+                    helper_text: "Se vazio: pode usar .env (GOOGLE_MAPS_API_KEY) ou não usar Google."
+                    size_hint_x: 1
+
+                MDBoxLayout:
+                    spacing: "12dp"
+                    size_hint_y: None
+                    height: tf_lang.height
+                    MDTextField:
+                        id: tf_lang
+                        mode: "outlined"
+                        hint_text: "Idioma (ex.: pt-BR)"
+                    MDTextField:
+                        id: tf_max_pts
+                        mode: "outlined"
+                        hint_text: "Max points (>=2)"
+                        input_filter: "int"
+                        text: "25"
+                        size_hint_x: None
+                        width: dp(140)
+
+                MDBoxLayout:
+                    spacing: "8dp"
+                    size_hint_y: None
+                    height: dp(40)
+                    MDButton:
+                        style: "tonal"
+                        on_release: root.restaurar_padrao()
+                        MDButtonText:
+                            text: "Restaurar padrão"
+                    MDButton:
+                        style: "filled"
+                        on_release: root.salvar_config()
+                        MDButtonText:
+                            text: "Salvar"
+
+                MDBoxLayout:
+                    spacing: "8dp"
+                    size_hint_y: None
+                    height: dp(40)
+                    MDButton:
+                        style: "tonal"
+                        on_release: root.testar_chave_google()
+                        MDButtonText:
+                            text: "Testar chave Google"
+
+                # ---- separador ----
+                Widget:
+                    size_hint_y: None
+                    height: "1dp"
+                    canvas.before:
+                        Color:
+                            rgba: 0.9, 0.9, 0.9, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+
+                # switches
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: dp(40)
+                    MDLabel:
+                        text: "Usar Google (geocoding/rotas)"
+                        halign: "left"
+                        valign: "center"
+                    MDSwitch:
+                        id: sw_use_google
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: dp(40)
+                    MDLabel:
+                        text: "Desenhar rota Google"
+                        halign: "left"
+                        valign: "center"
+                    MDSwitch:
+                        id: sw_draw_google
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: dp(40)
+                    MDLabel:
+                        text: "Incluir depósito no km"
+                        halign: "left"
+                        valign: "center"
+                    MDSwitch:
+                        id: sw_incluir_dep
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: dp(40)
+                    MDLabel:
+                        text: "Calcular km otimizado"
+                        halign: "left"
+                        valign: "center"
+                    MDSwitch:
+                        id: sw_km_otim
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: dp(40)
+                    MDLabel:
+                        text: "Camadas iniciam desmarcadas"
+                        halign: "left"
+                        valign: "center"
+                    MDSwitch:
+                        id: sw_layers_unchecked
+
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y: None
+                    height: dp(40)
+                    MDLabel:
+                        text: "Tempo preditivo (beta)"
+                        halign: "left"
+                        valign: "center"
+                    MDSwitch:
+                        id: sw_predictive
